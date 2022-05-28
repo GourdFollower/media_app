@@ -1,6 +1,5 @@
 import os
-from flask import Flask, render_template, current_app
-import db
+from flask import Flask, render_template
 
 
 def create_app(test_config=None):
@@ -29,11 +28,16 @@ def create_app(test_config=None):
     def hello():
         return render_template('name.html')
 
-    # from . import auth
-    # app.register_blueprint(auth.bp)
-
+    import db
     with app.app_context():
-        db.version()
+        db.init_db()
+
+    import auth
+    app.register_blueprint(auth.bp)
+
+    """import media
+    app.register_blueprint(media.bp)
+    app.add_url_rule('/', endpoint='index')"""
 
     return app
 

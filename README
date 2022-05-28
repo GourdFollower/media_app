@@ -1,0 +1,3 @@
+The goal of this project is to create a web app which will allow users to enter media they have consumed,
+and then to view data about their media consumption habits. It has a flask backend, and uses an SQL
+database. 
